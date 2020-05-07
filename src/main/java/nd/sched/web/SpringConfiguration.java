@@ -5,8 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import nd.sched.job.factory.JobFactory;
 import nd.sched.job.service.AsyncExecutorFacade;
@@ -66,15 +64,24 @@ public class SpringConfiguration {
         jtw.setJobTriggerService(jobTriggerService());
         return jtw;
     }
+    /*
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
+            public void addResourceHandlers(ResourceHandlerRegistry registry) {
+                registry.addResourceHandler("/ui/triggers/")
+                    .addResourceLocations("classpath:/public/");
+            }            
+        };
+    } 
+                registry.addResourceHandler("/error")
+                    .addResourceLocations("classpath:/public/ui/index.html");
+            @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**");
             }
-        };
-    }    
+    */   
 }
 
 /*

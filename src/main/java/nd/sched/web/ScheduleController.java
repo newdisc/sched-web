@@ -15,7 +15,7 @@ import nd.sched.job.JobTriggerStatus;
 import nd.sched.job.service.JobTriggerService;
 
 @RestController
-@RequestMapping("trigger")
+@RequestMapping("api/trigger")
 public class ScheduleController {
     public static final Logger logger = LoggerFactory.getLogger(ScheduleController.class);
     @Autowired
@@ -24,7 +24,7 @@ public class ScheduleController {
     @GetMapping("list")
     public List<? extends IJobTrigger> listTriggers(){
         List<? extends IJobTrigger> jt = jobTriggerService.getJobList();
-        logger.info("List of Job Triggers: {}", jt);
+        logger.debug("List of Job Triggers: {}", jt);
         return jt;
     }
 

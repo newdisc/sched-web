@@ -19,27 +19,20 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.5.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-        </dependency>
-        <dependency>
             <groupId>nd.sched</groupId>
             <artifactId>jobtree</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency> 
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
-        </dependency>
+            <groupId>nd.sched</groupId>
+            <artifactId>sched-reactui</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency> 
+		<dependency>  
+		    <groupId>org.tuckey</groupId>  
+		    <artifactId>urlrewritefilter</artifactId>  
+		    <version>4.0.4</version>  
+		</dependency>        
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -65,3 +58,25 @@
 		</plugins>
 	</build>    
 </project>
+
+<!--
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.5.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+ 
+ -->
