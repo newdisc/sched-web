@@ -22,17 +22,18 @@ public class JobController {
     JobFactory jobFactory;
 
     @GetMapping("list")
-    public List<? extends IJobExecutor> getJobExecutors(){
+    public List<? extends IJobExecutor> getJobExecutors() {
         logger.info("Collecting list of Jobs");
-        return jobFactory
-            .getRegistry()
-            .entrySet()
-            .stream()
-            .map(e -> e.getValue())
-            .collect(Collectors.toList());
+        return jobFactory.getRegistry().entrySet().stream().map(e -> e.getValue()).collect(Collectors.toList());
     }
+
     @GetMapping("details/{job}")
-    public IJobExecutor getJob(@PathVariable String job){
+    public IJobExecutor getJob(@PathVariable String job) {
         return jobFactory.getJobExecutor(job);
+    }
+
+    @GetMapping("logs/{job}")
+    public List<String> getJobLogs(@PathVariable String job) {
+        return jobFactory.getJobLogs(job);
     }
 }
