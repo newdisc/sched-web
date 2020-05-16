@@ -1,5 +1,7 @@
 package nd.sched.web;
 
+import java.util.concurrent.LinkedBlockingQueue;
+
 import org.quartz.SchedulerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,9 +43,13 @@ public class SpringConfiguration {
     @Bean
     public JobTriggerService jobTriggerService(){
         logger.debug("Creating JobTriggerService");
+        final LinkedBlockingQueue<String> jobQueue = new LinkedBlockingQueue<>();
         JobTriggerService jts = new JobTriggerService();
+        jts.setJobTriggerQueue(jobQueue);
         jts.setExecutorFacade(asyncExecutorFacade());
-        jts.loadTriggers(quartzCronService());
+        QuartzCronService quartzCronService = quartzCronService();
+        quartzCronService.setJobTriggerService(jts);
+        jts.loadTriggers(quartzCronService);
         return jts;
     }
     @Bean
