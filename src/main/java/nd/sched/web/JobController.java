@@ -1,6 +1,7 @@
 package nd.sched.web;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -24,7 +25,8 @@ public class JobController {
     @GetMapping("list")
     public List<? extends IJobExecutor> getJobExecutors() {
         logger.info("Collecting list of Jobs");
-        return jobFactory.getRegistry().entrySet().stream().map(e -> e.getValue()).collect(Collectors.toList());
+        return jobFactory.getRegistry().entrySet().stream()
+            .map(Map.Entry::getValue).collect(Collectors.toList());
     }
 
     @GetMapping("details/{job}")

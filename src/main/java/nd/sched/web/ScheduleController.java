@@ -34,8 +34,3 @@ public class ScheduleController {
         return jobTriggerService.runJob(triggerName);
     }
 }
-/*class
-import org.springframework.web.bind.annotation.CrossOrigin;
-@CrossOrigin(origins="*")
-    @CrossOrigin(origins="*")
-*/

@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonSerializer;
@@ -22,7 +21,6 @@ public class JobTriggerSerializer {
     public static class Serializer extends JsonSerializer<JobTrigger> {
         @Override
         public void serialize(JobTrigger jt, JsonGenerator jgen, SerializerProvider provider) throws IOException {
-            //provider.findTypeSerializer(IJobTrigger.class);
             logger.debug("Serialize called for: {}", jt);
             jgen.writeStartObject();
             jgen.writeStringField("status",jt.getStatus().toString());
@@ -42,9 +40,10 @@ public class JobTriggerSerializer {
 
         @Override
         public JobTrigger deserialize(JsonParser arg0, DeserializationContext arg1)
-                throws IOException, JsonProcessingException {
+                throws IOException {
             logger.info("DeSerialize called for");
             throw new UnsupportedOperationException("Deserialize on JobTrigger NOT supported");
         }
     }
+    private JobTriggerSerializer(){}
 }
