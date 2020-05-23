@@ -31,6 +31,8 @@ public class ScheduleController {
     @GetMapping("run")
     public JobTriggerStatus runJob(@RequestParam final String triggerName) {
         logger.info("Run Trigger: {}", triggerName);
-        return jobTriggerService.runJob(triggerName);
+        JobTriggerStatus ret = jobTriggerService.runJob(triggerName);
+        jobTriggerService.signalJob(triggerName);
+        return ret;
     }
 }
