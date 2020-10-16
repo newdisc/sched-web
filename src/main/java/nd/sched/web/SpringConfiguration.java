@@ -67,7 +67,7 @@ public class SpringConfiguration {
     }
     @Bean
     public JobTriggerWorker jobTriggerWorker() {
-        logger.info("Creating Job Trigger Worker");
+        logger.debug("Creating Job Trigger Worker");
         JobTriggerWorker jtw = new JobTriggerWorker();
         jtw.setJobTriggerService(jobTriggerService());
         return jtw;
