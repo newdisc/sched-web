@@ -10,7 +10,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import nd.sched.job.factory.IJobFactory;
+import nd.sched.job.factory.IJobRegistryPopulator;
 import nd.sched.job.factory.JobFactory;
+import nd.sched.job.factory.JobRegistryPopulator;
 import nd.sched.job.service.AsyncExecutorFacade;
 import nd.sched.job.service.ExecutorService;
 import nd.sched.job.service.JobTriggerService;
@@ -29,8 +32,11 @@ public class SpringConfiguration {
     public ExecutorService executorService(){
         logger.debug("Creating ExecutorService");
         ExecutorService esvc = new ExecutorService();
-        esvc.setJobFactory(jobFactory());
-        esvc.load();
+        IJobRegistryPopulator jrp = new JobRegistryPopulator();
+        IJobFactory jf = jobFactory();
+        esvc.setJobFactory(jf);
+        jrp.setFactory(jf);
+        jrp.registerJobs();
         return esvc;
     }
     @Bean

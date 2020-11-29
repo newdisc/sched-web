@@ -36,6 +36,6 @@ public class JobController {
 
     @GetMapping("logs/{job}")
     public List<String> getJobLogs(@PathVariable String job) {
-        return jobFactory.getJobLogs(job);
+        return jobFactory.getLogs(job);
     }
 }
