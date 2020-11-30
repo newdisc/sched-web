@@ -15,7 +15,7 @@ import nd.sched.job.factory.IJobRegistryPopulator;
 import nd.sched.job.factory.JobFactory;
 import nd.sched.job.factory.JobRegistryPopulator;
 import nd.sched.job.service.AsyncExecutorFacade;
-import nd.sched.job.service.ExecutorService;
+import nd.sched.job.service.JobExecutorService;
 import nd.sched.job.service.JobTriggerService;
 import nd.sched.job.service.JobTriggerWorker;
 import nd.sched.job.service.QuartzCronService;
@@ -29,9 +29,9 @@ public class SpringConfiguration {
         return new JobFactory();
     }
     @Bean
-    public ExecutorService executorService(){
+    public JobExecutorService executorService(){
         logger.debug("Creating ExecutorService");
-        ExecutorService esvc = new ExecutorService();
+        JobExecutorService esvc = new JobExecutorService();
         IJobRegistryPopulator jrp = new JobRegistryPopulator();
         IJobFactory jf = jobFactory();
         esvc.setJobFactory(jf);
